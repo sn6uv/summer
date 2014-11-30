@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsopn}
+
+\newcommand{\R}{\mathbb{R}}
+
+\title{Layer Potentials}
+
+\begin{document}
+\maketitle
+
+Let $\Omega \subset \R^n$ be a bounded domain with smooth boundary.
+Fix $f : \partial \Omega \to \R$ and consider Laplace's equation
+\begin{equation}
+\label{eq-laplace}
+\begin{cases}
+\Delta u = 0 & \text{in } \Omega, \\
+u = f & \text{on } \partial \Omega.
+\end{cases}
+\end{equation}
+where $\Delta = \sum_{j=1}^n \partial_{jj}$ is the Laplacian.
+We define the fundamental solution of Laplace's equation,
+\begin{equation}
+\label{eq-fund_soln_laplace}
+\Gamma(x-y)
+% = \Gamma(|x-y|)
+= \begin{cases}
+\frac{1}{2 \pi} \log|x-y|, & n = 2,  \vspace{2mm} \\
+\displaystyle \frac{-1}{n(n-2)V_{n} |x-y|^{n-2}}, & n \ge 3,
+\end{cases}
+\end{equation}
+where $V_n$ is the volume of the unit ball in $\R^n$.
+We compute      % TODO Show steps
+\begin{align*}
+\partial_i \Gamma(x-y) & = \frac{1}{n V_n} \frac{x_i - y_i}{|x-y|^n}, \\
+\partial_{ij} \Gamma(x-y) & = \frac{1}{n V_n} \frac{|x-y|^2 \delta_{ij} - n (x_i - y_i)(x_j - y_j)}{|x-y|^{n+2}}.
+\end{align*}
+Note the decay estimates,
+\begin{align*}
+|\partial_i \Gamma(x-y)| & \lesssim_n \frac{1}{|x-y|^{n-1}}, \\
+|\partial_{ij} \Gamma(x-y)| & \lesssim_n \frac{1}{|x-y|^{n}},
+\end{align*}
+for all $x \ne y$.
+
+\begin{thebibliography}{99}
+\bibitem{evans}
+Partial Differential Equations,
+Lawrence C. Evans,
+\textbf{2001}
+
+\bibitem{gt}
+Elliptic Partial Differential Equations of Second Order,
+Gilbarg, David and Trudinger, Neil,
+Second Edition,
+\textbf{1983}
+
+\end{thebibliography}
+\end{document}
