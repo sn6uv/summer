@@ -43,6 +43,36 @@ Note the decay estimates,
 |\partial_{ij} \Gamma(x-y)| & \lesssim_n \frac{1}{|x-y|^{n}},
 \end{align*}
 for all $x \ne y$.
+We wish to obtain the Green's identities.
+For all $u,v \in C^2(\bar\Omega)$, an integration by parts yields Greens first identity
+\[
+\int_{\Omega} v \Delta u \, dx = \int_{\partial \Omega} v \frac{\partial u}{\partial \nu} ds - \int_{\Omega} Du \cdot Dv dx.
+\]
+Interchanging $u$ and $v$ and subtracting gives Green's second identity,
+\[
+\int_{\Omega} (v \Delta u - u \Delta v) dx = \int_{\partial \Omega} \left(v \frac{\partial u}{\partial \nu} - u \frac{\partial v}{\partial \nu}\right)ds.
+\]
+We cannot just simply substitute $\Gamma$ in place of $v$ in this formula due to the singularity at $x = y$.
+We first consider $\Omega \setminus B(y, \rho)$ where $\rho > 0$ is chosen to be small.
+We have Green's second identity on this subdomain,
+\[
+\int_{\Omega \setminus B(y,\rho)} \Gamma \Delta u dx = \int_{\partial \Omega} \left(\Gamma \frac{\partial u}{\partial \nu} - u \frac{\partial \Gamma}{\partial \nu}\right) ds + \int_{\partial B(y,\rho)} \left(\Gamma \frac{\partial u}{\partial \nu} - u \frac{\partial \Gamma}{\partial \nu}\right) ds.
+\]
+Now, since $\Gamma$ is radially symmetric,
+\[
+\int_{\partial B(y,\rho)} \Gamma \frac{\partial u}{\partial \nu} ds = \Gamma(\rho) \int_{\partial B(y,\rho)} \frac{\partial u}{\partial \nu} ds
+\lesssim \rho^{n-1} \sup_{B(y,\rho)}|Du| \to 0 \quad \text{as}\ \rho \to 0.
+\].
+Likewise,using the above expression for $\partial_i \Gamma$,
+\[
+\int_{\partial B(y,\rho)} u \frac{\partial \Gamma}{\partial \nu} ds = -\Gamma'(\rho) \int_{\partial B(y,\rho)} u ds = \frac{-1}{n V_n \rho^{n-1}} \int_{\partial B(y,\rho)} u ds \to u(y)
+\quad \text{as}\ \rho \to 0.
+\]
+Letting $\rho$ tend to zero, we derive Green's representation formula,
+\begin{equation}
+u(y) = \int_{\partial \Omega} \left( u \frac{\partial \Gamma}{\nu} (x-y) - \Gamma(x-y) \frac{\partial u}{\partial \nu} \right)ds + \int_{\Omega} \Gamma(x-y) \Delta u \, dx
+\qquad (y \in \Omega).
+\end{equation}
 
 \begin{thebibliography}{99}
 \bibitem{evans}
