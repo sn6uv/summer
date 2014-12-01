@@ -70,9 +70,18 @@ Likewise,using the above expression for $\partial_i \Gamma$,
 \]
 Letting $\rho$ tend to zero, we derive Green's representation formula,
 \begin{equation}
-u(y) = \int_{\partial \Omega} \left( u \frac{\partial \Gamma}{\nu} (x-y) - \Gamma(x-y) \frac{\partial u}{\partial \nu} \right)ds + \int_{\Omega} \Gamma(x-y) \Delta u \, dx
+\label{eq-green_rep}
+u(y) = \int_{\partial \Omega} \left( u \frac{\partial \Gamma}{\partial \nu} (x-y) - \Gamma(x-y) \frac{\partial u}{\partial \nu} \right)ds + \int_{\Omega} \Gamma(x-y) \Delta u \, dx
 \qquad (y \in \Omega).
 \end{equation}
+In particular, a harmonic function $v \in C^1(\bar\Omega) \cap C^2(\Omega)$ can be represented by its boundary values,
+\[
+v(y) = \int_{\partial \Omega} \left( v \frac{\partial \Gamma}{\partial \nu} (x-y) - \Gamma(x-y) \frac{\partial v}{\partial \nu} \right)ds \qquad (y \in \Omega).
+\]
+We thus define the single-layer potential and double layer potentials respectively, $S,D : L^2(\partial \Omega) \to L^2(\partial \Omega)$ by
+\[
+S(v) = \int_{\partial \Omega}\Gamma(x-y) \frac{\partial v}{\partial \nu} ds, \qquad D(v) = \int_{\partial \Omega} v \frac{\partial \Gamma}{\partial \nu} (x-y) ds.
+\]
 
 \begin{thebibliography}{99}
 \bibitem{evans}
