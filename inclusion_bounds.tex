@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsopn}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newtheorem{lemma}{Lemma}\newcommand{\lemmaautorefname}{Lemma}
+\newtheorem{cond}{Condition}\newcommand{\condautorefname}{Condition}
+
+\title{Inclusion Bounds}
+
+\begin{document}
+\maketitle
+\begin{cond}
+\label{cond1}
+The domain $\Omega \subset \R^n$ is bounded, with piecewise smooth boundary in the sense that
+\[
+\Omega = \bigcap_{i=1}^N\{x : f_i(x) > 0\}
+\]
+where the $f_i$ are smooth functions defined on a neighbourhood of $\bar\Omega$ such that
+\begin{itemize}
+\item $\nabla f_i \ne 0$ on the set $\{f_i = 0\}$,
+\item $\{f_i = f_j = 0\}$ is an embedded submanifold of $\R^n$, $1 \le i < j \le N$, and
+\item $\Omega$ is locally Lipschitz.
+\end{itemize}
+\end{cond}
+
+\begin{lemma}
+\label{lem22}
+Let $\Omega \subset \R^n$ satisfy \autoref{cond1}.
+Then there exits a smooth vector field $a$ defined on a neighbourhood of $\bar\Omega$ such that
+\[
+a \cdot n \ge 1
+\]
+almost everywhere on $\partial \Omega$.
+\end{lemma}
+
+\begin{lemma}
+\label{lem21}
+Let $\Omega \subset \R^n$ satisfy \autoref{cond1}.
+Let $E > 1$ and let
+\[
+\phi = \sum_{|E_j - E| \le E^{1/2}} c_j \phi_j
+\]
+where $c_j \in \R$ and $\phi_j \subset L^2(\Omega)$ are (orthonormal) eigenfunctions associated with the Laplacian with eigenvalues $E_j$ and satisfy the Dirichlet boundary condition.
+Assume that $\lVert c_j \rVert_{\ell^2} = 1$.
+Then
+\[
+\lVert \partial_n \phi\rVert_{L^2(\Omega)}^2 \le C_\Omega E,
+\]
+where the constant $C$ depdends only on $\Omega$.
+\end{lemma}
+\begin{proof}
+We begin by deriving an identity for first order differential operators.
+Greens second identity gives
+\begin{align*}
+\int_{\partial \Omega} (D \phi) \partial_n \phi \, ds
+& = \int_{\partial \Omega} \phi \, \partial_n (D \phi) ds + \int_{\Omega}  \Big((D \phi)\Delta \phi - (\Delta (D \phi)) \phi \Big) dx \\
+& = \int_{\Omega} \Big((D \phi)(\Delta \phi) - \phi (\Delta D \phi)\Big) dx \\
+& = \int_{\Omega} \Big((D \phi) (\Delta \phi) - \phi [\Delta, D] \phi + \phi (D \Delta \phi) \Big) dx \\
+& = \int_{\Omega} \Big((D \phi) (\Delta + E) \phi - \phi [\Delta, D] \phi + \phi (D (\Delta + E) \phi) \Big) dx.
+\end{align*}
+The second equality is using the fact that $\phi$ satisfies the Dirichley boundary condition.
+We then apply the definition of the commutator and finish by adding and subtracting $\phi E (D \phi)$.
+% TODO well definedness
+We pick $D = a \cdot \nabla$ where $a$ comes from \autoref{lem22}.
+We notice
+\[
+\lVert \partial_n \phi \rVert_{L^2(\partial \Omega)}^2
+\le \int_{\partial \Omega} (a \cdot n) (\partial_n \phi)^2 ds
+= \int_{\partial \Omega} (D \phi) \partial_n \phi ds.
+\]
+% TODO Finish
+\end{proof}
+
+\end{document}
