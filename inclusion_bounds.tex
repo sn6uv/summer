@@ -69,13 +69,60 @@ The second equality is using the fact that $\phi$ satisfies the Dirichley bounda
 We then apply the definition of the commutator and finish by adding and subtracting $\phi E (D \phi)$.
 % TODO well definedness
 We pick $D = a \cdot \nabla$ where $a$ comes from \autoref{lem22}.
-We notice
+We thus notice
 \[
 \lVert \partial_n \phi \rVert_{L^2(\partial \Omega)}^2
 \le \int_{\partial \Omega} (a \cdot n) (\partial_n \phi)^2 ds
 = \int_{\partial \Omega} (D \phi) \partial_n \phi ds.
 \]
-% TODO Finish
+By using the above identity we thus deduce,
+\begin{equation}
+\label{eq-3terms}
+\lVert \partial_n \phi \rVert_{L^2(\partial \Omega)}^2 \le \int_{\Omega} (D \phi) (\Delta + E) \phi dx - \int_{\Omega} \phi [\Delta, D] \phi dx + \int_{\Omega} \phi (D (\Delta + E) \phi) dx.
+\end{equation}
+We want to bound each of these three terms.
+Defining $C_a = \sup_{x \in \Omega} |a(x)|$ we first have
+\begin{align*}
+\lVert D \phi \rVert_{L^2(\Omega)}^2 \le C_a^2 \int_{\Omega} \lVert \nabla \phi\rVert^2 dx & = - C_a^2 \int_{\Omega} \phi \Delta \phi dx \\
+& = -C_a^2 \int_{\Omega} \phi \sum_{|E_j - E| \le E^{1/2}} c_j \Delta \phi_j dx
+\\
+& = C_a^2 \sum_{|E_j - E| \le E^{1/2}} c_j^2 E_j \\
+& \le C_a^2 \underbrace{\sum_{|E_j - E| < E^{1/2}} c_j^2}_1 (E + E^{1/2})
+\end{align*}
+The first equality is an integration by parts using the fact that $\phi$ satisfies the Dirichlet boundary condition.
+The rest follows from the fact that $\phi$ is normalised and has an expansion in terms of eigenfunctions $\phi_j$ with associated eigenvalues $-E_j$.
+Furthermore,
+\begin{align*}
+\lVert D(\Delta + E)\phi\rVert_{L^2(\Omega)}^2 & \le C_a^2 \int_{\Omega} \lvert \nabla (\Delta + E) \phi\rvert^2 dx \\
+& = -C_a^2 \int_{\Omega} \sum_{i,j} ((\Delta + E) \phi_i) (\Delta (\Delta + E) \phi_j) dx \\
+& = C_a^2 \int_{\Omega} c_i c_j \sum_{i,j} ((-E_i + E) \phi_i) E_j (-E_j + E) \phi_i) dx \\
+& = C_a^2 \sum_j c_j^2 E_j (E-E_j)^2
+\le C_a^2 E^{3/2}
+\le C_a^2 E (E + E^{1/2})
+\end{align*}
+The first equality is an integration by parts. We then express $\phi$ is the basis of (orthogonal) eigenfuncions.
+The final estimate we use is similar
+\[
+\lVert (\Delta + E) \phi \rVert_{L^2(\Omega)}^2
+= \int_{\Omega} \Big((\Delta + E)\sum_j c_j \phi_j\Big)^2 dx
+= \sum_j c_j^2 (E-E_j)^2 \le E.
+\]
+The Cauchy-Schwartz inequality thus allows us to bound the last two terms in \eqref{eq-3terms}
+\[
+\int_{\Omega} (D \phi) (\Delta + E)\phi dx \le \lVert D\phi \rVert_{L^2(\Omega)} \lVert (\Delta + E) \phi \rVert_{L^2(\Omega)}
+\le C_a \sqrt{E(E + E^{1/2})},
+\]
+\[
+\int_{\Omega} \phi D(\Delta + E) \phi dx \le \lVert D(\Delta + E) \phi \rVert_{L^2(\Omega)} \le C_a \sqrt{E (E + E^{1/2})},
+\]
+so that their sum is bounded by $2 C_a \sqrt{E (E+E^{1/2})}$.
+It remains to estimate the first term on the right hand side of \eqref{eq-3terms}.
+We get
+\begin{align*}
+- \int_{\Omega} [\Delta, D] \phi dx
+& = -\int_{\Omega} \partial_{ii} (a_j \partial_j \cdot) - a_j \partial_{iij} \phi dx \\
+& = % TODO
+\end{align*}
 \end{proof}
 
 \end{document}
