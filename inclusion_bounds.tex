@@ -9,6 +9,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newtheorem{thm}{Theorem}\newcommand{\thmautorefname}{Theorem}
 \newtheorem{lemma}{Lemma}\newcommand{\lemmaautorefname}{Lemma}
 \newtheorem{cond}{Condition}\newcommand{\condautorefname}{Condition}
 
@@ -51,9 +52,8 @@ where $c_j \in \R$ and $\phi_j \subset L^2(\Omega)$ are (orthonormal) eigenfunct
 Assume that $\lVert c_j \rVert_{\ell^2} = 1$.
 Then
 \[
-\lVert \partial_n \phi\rVert_{L^2(\Omega)}^2 \le C_\Omega E,
+\lVert \partial_n \phi\rVert_{L^2(\Omega)}^2 \lesssim_\Omega E.
 \]
-where the constant $C$ depdends only on $\Omega$.
 \end{lemma}
 \begin{proof}
 We begin by deriving an identity for first order differential operators.
@@ -140,5 +140,23 @@ We thus deduce
 \]
 for $E > 1$.
 \end{proof}
-
+\begin{thm}
+Let $\Omega \subset \R^n$ be a domain satisfying \autoref{cond1}. Then
+\[
+\left\lVert \psi \mapsto \sum_{|E_j - E| < E^{1/2}} \psi_j \langle \psi_j, \psi \rangle \right\rVert_{\mathcal{L}(L^2(\partial \Omega))} \lesssim_\Omega E.
+\]
+for all $E \ge 1$ where $\langle \cdot, \cdot \rangle$ denotes the $L^2(\partial \Omega)$ inner product and $\psi_j := \partial_n \phi_j$.
+\end{thm}
+\begin{proof}
+Define the linear operator $T : \R^N \to L^2(\partial \Omega)$ where $N$ is the number of terms for which $|E_j - E| < E^{1/2}$ by
+\[
+T c = \sum_{|E_j - E| < E^{1/2}} c_j \psi_j.
+\]
+\autoref{lem21} states that $\lVert T \rVert_{\ell^2 \to L^2(\partial \Omega)} \lesssim_\Omega E^{1/2}$.
+It follows $\lVert T T^* \rVert_{L^2(\partial \Omega)} \lesssim_\Omega E$.
+We have of course
+\[
+T T^* \psi =  \sum_{i} c_i \sum_{j} c_j \langle \
+\]
+\end{proof}
 \end{document}
