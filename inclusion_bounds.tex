@@ -117,12 +117,23 @@ The Cauchy-Schwartz inequality thus allows us to bound the last two terms in \eq
 \]
 so that their sum is bounded by $2 C_a \sqrt{E (E+E^{1/2})}$.
 It remains to estimate the first term on the right hand side of \eqref{eq-3terms}.
-We get
+Expressing the commutator in Einstein notation,
 \begin{align*}
-- \int_{\Omega} [\Delta, D] \phi dx
+- \int_{\Omega} [\Delta, D] \phi \, dx
 & = -\int_{\Omega} \phi \partial_{ii} (a_j \partial_j \phi) - \phi a_j \partial_{iij} \phi \, dx \\
-& = % TODO
+& = - \int_{\Omega} \phi \partial_i (\partial_i a_j \partial_j \phi + a_j \partial_{ij} \phi) - \phi a_j \partial_{iij} \phi \, dx \\
+& = - \int_{\Omega} \phi (\partial_{ii} a_j) \partial_j \phi + 2 \phi (\partial_i a_j) \partial_{ij} \phi \, dx.
 \end{align*}
+We focus on the second term. Integrating by parts and using the Dirichlet condition
+\begin{align*}
+- \int_{\Omega} \phi (\partial_i a_j) \partial_{ij} \phi \, dx = \int_{\Omega} \phi (\partial_{ii} a_j)\partial_j \phi + (\partial_i a_j)(\partial_i \phi)\partial_j \phi \, dx
+\end{align*}
+such that
+\begin{equation}
+\label{eq-28}
+- \int_{\Omega} [\Delta, D] \phi \, dx = \int_{\Omega} \phi (\partial_{ii} a_j)\partial_j \phi \, dx + 2 \int_{\Omega} (\partial_i a_j)(\partial_i \phi)\partial_j \phi \, dx.
+\end{equation}
 \end{proof}
+We bound this expression by $2 C_a' + C_a'' \sqrt{E + E^{1/2}}$ where $C_a' =
 
 \end{document}
