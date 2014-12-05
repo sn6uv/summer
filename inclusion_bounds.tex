@@ -133,7 +133,12 @@ such that
 \label{eq-28}
 - \int_{\Omega} [\Delta, D] \phi \, dx = \int_{\Omega} \phi (\partial_{ii} a_j)\partial_j \phi \, dx + 2 \int_{\Omega} (\partial_i a_j)(\partial_i \phi)\partial_j \phi \, dx.
 \end{equation}
+We bound this expression by $2 C_a' + C_a'' \sqrt{E + E^{1/2}}$ where $C_a' := \sup_{x \in \Omega} \lVert A(x) \rVert_{\R^n \times \R^n} < \infty$ where $A_{ij} = \partial_i a_j$ and $C_a'' := \sup_{x \in \Omega} \sup_{j=1,\dots,n} |\Delta a_j (x)| < \infty$.
+We thus deduce
+\[
+\lVert \partial_n \phi \rVert_{L^2(\partial \Omega}^2 \le 2 (C_a + C_a') (E + E^{1/2}) + C_a'' \sqrt{E + E^{1/2}} \lesssim E
+\]
+for $E > 1$.
 \end{proof}
-We bound this expression by $2 C_a' + C_a'' \sqrt{E + E^{1/2}}$ where $C_a' =
 
 \end{document}
