@@ -1,0 +1,76 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{Pseudo-differential operators}
+\author{Angus Griffith}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Pseudo-differential operators are a generialisation of differential operators.
+\paragraph{}
+Let $\Omega \subset \R^n$ and consider a linear differential operator of order $m$ with constant coefficients
+\[
+p(D) = \sum_{|\alpha| \le m} a_\alpha D^\alpha,
+\]
+where $\alpha \in \N^n$ are multiindices and $a_\alpha \in \C$.
+The symbol of such an operator is simple to compute,
+\[
+P(\xi) = \sum_{|\alpha| \le m} a_\alpha \xi^\alpha.
+\]
+\paragraph{}
+Let $f : \Omega \to \C$.
+We can solve the PDE
+\[
+P(D) u = f
+\]
+by applying the Fourier transform to both sides
+\[
+p(\xi) \hat{u}(\xi) = \hat{f}(\xi).
+\]
+Provided the symbol does not vanish in $\R^n$ we rearrange to find
+\[
+\hat{u}(\xi) = \frac{1}{P(\xi)} \hat{f}(\xi).
+\]
+Since $P(\xi)$ is continuous and non-vanishing, $\frac{1}{P} \in L^\infty(\R^n)$ and so we can invert the Fourier transform to find a solution
+\[
+u(x) = \frac{1}{(2 \pi)^n} \int_{\R^n} e^{i x \cdot \xi} \frac{1}{P(\xi)} \hat{f}(\xi) d\xi.
+\]
+Expanding the definition of $\hat{f}$,
+\[
+u(x) = \frac{1}{(2 \pi)^n} \int_{\R^{2n}} e^{i (x-y) \cdot \xi} \frac{1}{P(\xi)} f(y) \, dy \, d\xi.
+\]
+Note that we are assuming $u$ and $f$ have well defined Fourier transforms, e.g. $u,f \in L^2$, $u,f \in \mathcal{S}'$ etc.
+\paragraph{}
+Natural questions to ask:
+\begin{itemize}
+\item What is the meaning of assuming that our solution has a well defined Fourier transform?
+\item What classes of non-constant coefficients $a_\alpha(x)$ could we hope to handle?
+\end{itemize}
+\section{Pseudo-differential operators}
+
+
+%
+\begin{thebibliography}{9}
+\bibitem{gerard07}
+\emph{Pseudo-differential Operators and the Nash--Moser Theorem},
+Serge Alinhac and Patrick G\'erard,
+Graduate Studies in Mathematics vol. 82,
+\textbf{2007}.
+
+\bibitem{wiki}
+\emph{Pseudo-differential operator},
+Wikipedia, the free encyclopedia,
+\url{http://en.wikipedia.org/wiki/Pseudo-differential_operator},
+Accessed: Jan 2015.
+\end{thebibliography}
+\end{document}
