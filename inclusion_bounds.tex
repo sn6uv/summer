@@ -150,7 +150,7 @@ for all $E \ge 1$ where $\langle \cdot, \cdot \rangle$ denotes the $L^2(\partial
 \begin{proof}
 Define the linear operator $T : \R^N \to L^2(\partial \Omega)$ where $N$ is the number of terms for which $|E_j - E| < E^{1/2}$ by
 \[
-T c = \sum_{|E_j - E| < E^{1/2}} c_j \psi_j.
+T c = \sum_{|E_j - E| < E^{1/2}} \langle \phi_j, \psi_j \rangle  \psi_j.
 \]
 \autoref{lem21} states that $\lVert T \rVert_{\ell^2 \to L^2(\partial \Omega)} \lesssim_\Omega E^{1/2}$.
 It follows $\lVert T T^* \rVert_{L^2(\partial \Omega)} \lesssim_\Omega E$.
