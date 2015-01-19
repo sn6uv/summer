@@ -9,6 +9,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newtheorem{thm}{Theorem}\newcommand{\thmautorefname}{Theorem}
 \newtheorem{lemma}{Lemma}\newcommand{\lemmaautorefname}{Lemma}
 \newtheorem{cond}{Condition}\newcommand{\condautorefname}{Condition}
 
@@ -51,9 +52,8 @@ where $c_j \in \R$ and $\phi_j \subset L^2(\Omega)$ are (orthonormal) eigenfunct
 Assume that $\lVert c_j \rVert_{\ell^2} = 1$.
 Then
 \[
-\lVert \partial_n \phi\rVert_{L^2(\Omega)}^2 \le C_\Omega E,
+\lVert \partial_n \phi\rVert_{L^2(\Omega)}^2 \lesssim_\Omega E.
 \]
-where the constant $C$ depdends only on $\Omega$.
 \end{lemma}
 \begin{proof}
 We begin by deriving an identity for first order differential operators.
@@ -117,12 +117,46 @@ The Cauchy-Schwartz inequality thus allows us to bound the last two terms in \eq
 \]
 so that their sum is bounded by $2 C_a \sqrt{E (E+E^{1/2})}$.
 It remains to estimate the first term on the right hand side of \eqref{eq-3terms}.
-We get
+Expressing the commutator in Einstein notation,
 \begin{align*}
-- \int_{\Omega} [\Delta, D] \phi dx
+- \int_{\Omega} [\Delta, D] \phi \, dx
 & = -\int_{\Omega} \phi \partial_{ii} (a_j \partial_j \phi) - \phi a_j \partial_{iij} \phi \, dx \\
-& = % TODO
+& = - \int_{\Omega} \phi \partial_i (\partial_i a_j \partial_j \phi + a_j \partial_{ij} \phi) - \phi a_j \partial_{iij} \phi \, dx \\
+& = - \int_{\Omega} \phi (\partial_{ii} a_j) \partial_j \phi + 2 \phi (\partial_i a_j) \partial_{ij} \phi \, dx.
 \end{align*}
+We focus on the second term. Integrating by parts and using the Dirichlet condition
+\begin{align*}
+- \int_{\Omega} \phi (\partial_i a_j) \partial_{ij} \phi \, dx = \int_{\Omega} \phi (\partial_{ii} a_j)\partial_j \phi + (\partial_i a_j)(\partial_i \phi)\partial_j \phi \, dx
+\end{align*}
+such that
+\begin{equation}
+\label{eq-28}
+- \int_{\Omega} [\Delta, D] \phi \, dx = \int_{\Omega} \phi (\partial_{ii} a_j)\partial_j \phi \, dx + 2 \int_{\Omega} (\partial_i a_j)(\partial_i \phi)\partial_j \phi \, dx.
+\end{equation}
+We bound this expression by $2 C_a' + C_a'' \sqrt{E + E^{1/2}}$ where $C_a' := \sup_{x \in \Omega} \lVert A(x) \rVert_{\R^n \times \R^n} < \infty$ where $A_{ij} = \partial_i a_j$ and $C_a'' := \sup_{x \in \Omega} \sup_{j=1,\dots,n} |\Delta a_j (x)| < \infty$.
+We thus deduce
+\[
+\lVert \partial_n \phi \rVert_{L^2(\partial \Omega}^2 \le 2 (C_a + C_a') (E + E^{1/2}) + C_a'' \sqrt{E + E^{1/2}} \lesssim E
+\]
+for $E > 1$.
 \end{proof}
-
+\begin{thm}
+Let $\Omega \subset \R^n$ be a domain satisfying \autoref{cond1}. Then
+\[
+\left\lVert \psi \mapsto \sum_{|E_j - E| < E^{1/2}} \psi_j \langle \psi_j, \psi \rangle \right\rVert_{\mathcal{L}(L^2(\partial \Omega))} \lesssim_\Omega E.
+\]
+for all $E \ge 1$ where $\langle \cdot, \cdot \rangle$ denotes the $L^2(\partial \Omega)$ inner product and $\psi_j := \partial_n \phi_j$.
+\end{thm}
+\begin{proof}
+Define the linear operator $T : \R^N \to L^2(\partial \Omega)$ where $N$ is the number of terms for which $|E_j - E| < E^{1/2}$ by
+\[
+T c = \sum_{|E_j - E| < E^{1/2}} \langle \phi_j, \psi_j \rangle  \psi_j.
+\]
+\autoref{lem21} states that $\lVert T \rVert_{\ell^2 \to L^2(\partial \Omega)} \lesssim_\Omega E^{1/2}$.
+It follows $\lVert T T^* \rVert_{L^2(\partial \Omega)} \lesssim_\Omega E$.
+We have of course
+\[
+T T^* \psi =  \sum_{i} c_i \sum_{j} c_j \langle \
+\]
+\end{proof}
 \end{document}

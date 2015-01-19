@@ -1,0 +1,129 @@
+\documentclass[10pt]{article}
+
+\title{Pseudo-differential operators}
+\author{Angus Griffith}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{enumerate}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}
+
+\begin{document}
+
+\maketitle
+
+\section{Differential Operators}
+Pseudo-differential operators are a generialisation of differential operators.
+\paragraph{}
+Let $\Omega \subset \R^n$ and consider a linear differential operator of order $m$ with constant coefficients
+\[
+p(D) = \sum_{|\alpha| \le m} a_\alpha D^\alpha,
+\]
+where $\alpha \in \N^n$ are multiindices and $a_\alpha \in \C$.
+The symbol of such an operator is simple to compute,
+\[
+P(\xi) = \sum_{|\alpha| \le m} a_\alpha \xi^\alpha.
+\]
+\paragraph{}
+Let $f : \Omega \to \C$.
+We can solve the PDE
+\[
+P(D) u = f
+\]
+by applying the Fourier transform to both sides
+\[
+p(\xi) \hat{u}(\xi) = \hat{f}(\xi).
+\]
+Provided the symbol does not vanish in $\R^n$ we rearrange to find
+\[
+\hat{u}(\xi) = \frac{1}{P(\xi)} \hat{f}(\xi).
+\]
+Since $P(\xi)$ is continuous and non-vanishing, $\frac{1}{P} \in L^\infty(\R^n)$ and so we can invert the Fourier transform to find a solution
+\[
+u(x) = \frac{1}{(2 \pi)^n} \int_{\R^n} e^{i x \cdot \xi} \frac{1}{P(\xi)} \hat{f}(\xi) d\xi.
+\]
+Expanding the definition of $\hat{f}$,
+\[
+u(x) = \frac{1}{(2 \pi)^n} \int_{\R^{2n}} e^{i (x-y) \cdot \xi} \frac{1}{P(\xi)} f(y) \, dy \, d\xi.
+\]
+Note that we are assuming $u$ and $f$ have well defined Fourier transforms, e.g. $u,f \in L^2$, $u,f \in \mathcal{S}'$ etc.
+\paragraph{}
+Natural questions to ask:
+\begin{itemize}
+\item What is the meaning of assuming that our solution has a well defined Fourier transform?
+\item What classes of non-constant coefficients $a_\alpha(x)$ could we hope to handle?
+\end{itemize}
+\section{Symbols}
+If we applied the above analysis to the differential operator
+\[
+P = \sum_{|\alpha| \le m} a_\alpha(x) D^{\alpha}
+\]
+where $a \in \mathcal{S}$ we would obtain the formula
+\begin{align*}
+Pu(x) & = (2 \pi)^{-n} \int_{\R^n} e^{ix \cdot \xi} p(x,\xi) \hat{u}(\xi) d\xi, \\
+p(x,\xi) & = \sum_{|\alpha| \le m} a_\alpha(x) \xi^\alpha.
+\end{align*}
+Notice that this definition still makes sense for $p$ more general than just a polynomial.
+We can generalise $p$ to any `reasonable' function $a = a(x,\xi)$.
+The corresponding operator $a(x,D)$ will be said to be the pseudo-differential operator with symbol $a(x,\xi)$ and will be denoted $A$.
+By reasonable we mean that $a(x,\xi)$ there exists $m$ such that for all $\alpha$,
+\begin{enumerate}[(i)]
+\item
+$\displaystyle |\partial_\xi^\alpha a(x,\xi)| \le C_\alpha (1 + |\xi|)^{m-|\alpha|}$,
+\item
+$\displaystyle |\partial_x^\alpha a(x,\xi)| \le C_\alpha (1 + |\xi|)^m$.
+\end{enumerate}
+The first condition captures that $a(x,\xi)$ should have polynomial type behaviour as $|\xi| \to \infty$, improving with respect to differentiation with respect to $\xi$.
+The second condition expresses that the amplitude $a(x,\xi)$ and phase $e^{i x \cdot \xi}$ can be distinguished.
+\paragraph{}
+We formaise this further with the following definition
+\begin{defn}
+Let $m \in \R$. Let $S^m = S^m(\R^n \times \R^n)$ denote the set of $a \in C^\infty(\R^n \times \R^n)$ such that
+\[
+\forall \alpha, \beta, \ |\partial_x^\alpha \partial_\xi^\beta a(x,\xi)| \le C_{\alpha,\beta} (1 + |\xi|)^{m-|\beta|}.
+\]
+An element $a \in S^m$ is called a symbol of order $m$.
+\end{defn}
+Note the similarity to the definition of Schwartz functions.
+\begin{defn}
+If $a(x,\xi) = \sum_{|\alpha| \le m} a_\alpha(x) \xi^\alpha$ with $a_\alpha \in \C^\infty(\R^n)$ is bounded, along with all its derivatives
+and $a \in S^m$ then $a$ is said to be a differential symbol.
+\end{defn}
+As one might expect, $S^m$ forms a Fr\'echet space which can be equipped with semi-norms
+\[
+\lVert \alpha \rVert_{\alpha, \beta}^m = \sup_{(x,\xi) \in \R^n \times \R^n} \left\{(1 + |\xi|)^{-m - |\beta|} \big| \partial_x^\alpha \partial_\xi^\beta a(x,\xi)\big| \right\}.
+\]
+\section{Pseudo-differential operators}
+We now define the pseudo-differential operators,
+\begin{defn}
+For $a \in S^m$,
+\[
+Op(a) : u(x) \mapsto (2\pi)^{-n} \int_{\R^n} e^{i x \cdot \xi} a(x,\xi) \hat{u}(\xi) d\xi
+\]
+is the pseudo-differential operator with symbol $a$.
+A pseudo-differential operator is said to be of order $m$ if its symbol belongs to $S^m$.
+\end{defn}
+
+
+%
+\begin{thebibliography}{9}
+\bibitem{gerard07}
+\emph{Pseudo-differential Operators and the Nash--Moser Theorem},
+Serge Alinhac and Patrick G\'erard,
+Graduate Studies in Mathematics vol. 82,
+\textbf{2007}.
+
+\bibitem{wiki}
+\emph{Pseudo-differential operator},
+Wikipedia, the free encyclopedia,
+\url{http://en.wikipedia.org/wiki/Pseudo-differential_operator},
+Accessed: Jan 2015.
+\end{thebibliography}
+\end{document}
