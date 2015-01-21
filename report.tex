@@ -69,7 +69,13 @@ The colour of the plot is given by $|C_{k,k+1} - C^w_{k,k+1}|$.
 Observe that the expected $O(N^2)$ growth in the runtime is clear.
 We also observe a small but significant growth in the runtime as $k$ increases for fixed $N$.
 \subsection{Fredholm determinant method}
+\includegraphics[width=0.9\textwidth]{fd.eps} \\
+The Fredholm determinant method is significantly slower than the Neumann-to-Dirichlet method.
+The runtime apears to depend linearly on $k$ and quadratically on $N$.
+That is, the runtime looks like $O(Nk^2)$.
+The Fredholm determinant method appears to be less resiliant to undersampling when compared to the Neumann-to-Dirichelt method.
 \subsection{Method of particular solutions}
+% \includegraphics[width=0.9\textwidth]{ms.eps} \\
 
 \begin{thebibliography}{9}
 
