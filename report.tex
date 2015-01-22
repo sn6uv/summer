@@ -16,6 +16,7 @@ C^w_{0,k} = \frac{\mbox{Area}}{4 \pi} k^2 - \frac{\mbox{Perimeter}}{4 \pi} k + o
 \end{equation}
 We thus dedcuce that the number of eigenvalues in the interval $[k_a, k_b]$ is given by
 \begin{equation}
+\label{weyl}
 C^w_{k_a,k_b} = \frac{\mbox{Area}}{4 \pi} (k_b^2 -k_a^2) - \frac{\mbox{Perimeter}}{4 \pi} (k_b - k_a) + o(XXX)
 \end{equation}
 \section{Upper and Lower Bounds for Normal Derivatives of Dirichlet Eigenfunctions}
@@ -62,14 +63,19 @@ The following is a comparison of the performance of the various methods built in
 Each calculation is repeated 5 times and an average is taken.
 \paragraph{}
 We plot the time taken to search for the eigenvalues as a function of $k$ and $N$.
-The number of eigenvalues found $N_{k,k+1}$ is compared to the number expected $C^w_{k,k+1}$ by the Weyl formula \ref{weyl}.
-The colour of the plot is given by $|C_{k,k+1} - C^w_{k,k+1}|$.
+The number of eigenvalues found $N_{k,k+1}$ is compared to the number expected $C^w_{k,k+1}$ by the Weyl formula \eqref{weyl}.
+Those regions where $|C_{k,k+1} - C^w_{k,k+1}| > 3$ are shaded in red.
+% The colour of the plot is given by $|C_{k,k+1} - C^w_{k,k+1}|$.
 \subsection{Neumann-to-Dirichlet method}
-\includegraphics[width=0.9\textwidth]{dtn.eps} \\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{dtn.eps} \\
+\end{center}
 Observe that the expected $O(N^2)$ growth in the runtime is clear.
 We also observe a small but significant growth in the runtime as $k$ increases for fixed $N$.
 \subsection{Fredholm determinant method}
-\includegraphics[width=0.9\textwidth]{fd.eps} \\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fd.eps} \\
+\end{center}
 The Fredholm determinant method is significantly slower than the Neumann-to-Dirichlet method.
 The runtime apears to depend linearly on $k$ and quadratically on $N$.
 That is, the runtime looks like $O(Nk^2)$.
@@ -78,12 +84,20 @@ The Fredholm determinant method appears to be less resiliant to undersampling wh
 \paragraph{}
 The method of particular solutions was even slower still.
 In fact, the number of points had to be reduced in order to complete the calculations in a reasonable time. \\
-\includegraphics[width=0.9\textwidth]{ms.eps} \\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{ms.eps} \\
+\end{center}
+\paragraph{}
 The runtime behaviour of the particular solutions method is interesting.
 It appears to be linear in $k$, at least when $N$ is large.
 There is also a clear dependence on $N$, it appears quadratic, for small $k$.
 There is a critical ridge along the line approximately $N = 3 k$.
 The runtime drops for $N < 3k$ and the method misses some eigenvalues.
+\subsection{Conclusion}
+\paragraph{}
+Even for moderate eigenvalues ($k < 200$), the Neumann-to-Dirichlet it a clear winner.
+Not only is it significantly faster than the other methods tested, it also misses fewer eigenvalues when undersampled.
+
 
 \begin{thebibliography}{9}
 
