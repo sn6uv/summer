@@ -78,8 +78,12 @@ The Fredholm determinant method appears to be less resiliant to undersampling wh
 \paragraph{}
 The method of particular solutions was even slower still.
 In fact, the number of points had to be reduced in order to complete the calculations in a reasonable time. \\
-% \includegraphics[width=0.9\textwidth]{ms.eps} \\
-% XXX Growth behaviour
+\includegraphics[width=0.9\textwidth]{ms.eps} \\
+The runtime behaviour of the particular solutions method is interesting.
+It appears to be linear in $k$, at least when $N$ is large.
+There is also a clear dependence on $N$, it appears quadratic, for small $k$.
+There is a critical ridge along the line approximately $N = 3 k$.
+The runtime drops for $N < 3k$ and the method misses some eigenvalues.
 
 \begin{thebibliography}{9}
 
